@@ -40,4 +40,28 @@ public class CountryController {
        repo.save(country);
        return country;
    }
+
+   @PutMapping("/countries/{id}")
+   public Country updateCountry(@RequestBody Country country, @PathVariable int id)
+   {
+      if(country == null) {
+         return null;
+      }
+
+      if(id != country.getId()) {
+         return null;
+      }
+
+      repo.update(country);
+      return country;
+   }
+
+   @DeleteMapping("/countries/{id}")
+   public void deleteCountry(@PathVariable int id) {
+      var country = repo.getById(id);
+
+      if(country != null) {
+         repo.delete(country);
+      }
+   }
 }

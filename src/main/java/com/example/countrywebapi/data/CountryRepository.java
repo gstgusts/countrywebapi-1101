@@ -86,4 +86,40 @@ public class CountryRepository {
             session.close();
         }
     }
+
+    public void update(Object item) {
+        var session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            session.update(item);
+            tx.commit();
+        } catch (HibernateException ex) {
+            if(tx != null) {
+                tx.rollback();
+            }
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+    }
+
+    public void delete(Object obj) {
+        var session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+            session.delete(obj);
+            tx.commit();
+        } catch (HibernateException exception) {
+            if(tx != null) {
+                tx.rollback();
+            }
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+    }
 }
