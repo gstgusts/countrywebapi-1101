@@ -1,4 +1,4 @@
-package com.example.countrywebapi.controllers;
+package com.example.countrywebapi.controllers.api;
 
 import com.example.countrywebapi.data.Country;
 import com.example.countrywebapi.data.CountryRepository;
