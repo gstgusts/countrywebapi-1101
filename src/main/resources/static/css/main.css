@@ -12,3 +12,15 @@
 #selectedCountry {
     margin-left: 20px;
 }
+
+.loader {
+    height: 35px;
+    width: 35px;
+    background-color: darkgray;
+    border: solid darkblue 1px;
+    margin-top: 10px;
+    margin-left: 300px;
+    position: absolute;
+    z-index: 1000;
+    display: none;
+}
