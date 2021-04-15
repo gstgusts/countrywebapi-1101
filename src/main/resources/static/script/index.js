@@ -19,9 +19,6 @@ function onSelectionChanged() {
 
        $('#btnEdit').prop("disabled", false);
     }
-
-    // document.querySelector('#selectedRows').innerHTML =
-    //     selectedRows.length === 1 ? selectedRows[0].athlete : '';
 }
 
 $(function() {
