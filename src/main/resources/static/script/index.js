@@ -36,7 +36,14 @@ function loadGridData() {
     agGrid.simpleHttpRequest({url: 'http://localhost:8080/api/countries'}).then(function(data) {
         gridOptions.api.setRowData(data);
         showHideLoader(false);
+        resetGridSelection();
     });
+}
+
+function resetGridSelection() {
+    $('#selectedCountry').text('');
+    $('#btnEdit').prop("disabled", true);
+    $('#btnDelete').prop("disabled", true);
 }
 
 function addUpdateCountry() {
@@ -74,14 +81,9 @@ function addUpdateCountry() {
         showHideLoader(false);
 
         let editModal = bootstrap.Modal.getInstance(document.getElementById('countryEditModal'));
-
         editModal.hide();
 
         loadGridData();
-
-        $('#selectedCountry').text('');
-        $('#btnEdit').prop("disabled", true);
-        $('#btnDelete').prop("disabled", true);
 
     });
 }
@@ -165,6 +167,10 @@ $(function() {
 
         $.ajax(settings).done(function (response) {
             showHideLoader(false);
+
+            let confirmationModal = bootstrap.Modal.getInstance(document.getElementById('confirmDeleteModal'));
+            confirmationModal.hide();
+
             loadGridData();
         });
     });
